@@ -8,6 +8,6 @@
     "license": "MIT",
     "type": "project",
     "require": {
-
+        "tonyhhyip/sse": "^2.1"
     }
 }
