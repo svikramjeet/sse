@@ -1,36 +1,43 @@
-<!DOCTYPE html>
 <html>
-  <body>
-    <h1>Getting server updates</h1>
-    <div id="result"></div>
+<head>
+   <meta charset="UTF-8">
+   <title>Server-sent events demo</title>
+</head>
+<body>
+  <button>Close the connection</button>
 
-    <script>
-      if (typeof EventSource !== "undefined") {
-        const evtSource = new EventSource("sse2.php");
-        evtSource.onmessage = function(event) {
-          const newElement = document.createElement("li");
-          const eventList = document.getElementById("list");
+  <ul>
+  </ul>
 
-          newElement.innerHTML = "message: " + event.data;
-          eventList.appendChild(newElement);
-        }
-
-        evtSource.onerror = function(err) {
-          console.error("EventSource failed:", err);
-        };
-
-        evtSource.addEventListener("ping", function(event) {
-        const newElement = document.createElement("li");
-        const time = JSON.parse(event.data).time;
-        newElement.innerHTML = "ping at " + time;
-        eventList.appendChild(newElement);
-        });
-
-
-      } else {
-        document.getElementById("result").innerHTML =
-          "Sorry, your browser does not support server-sent events...";
-      }
-    </script>
-  </body>
+<script>
+  var button = document.querySelector('button');
+  var evtSource = new EventSource('sse2.php');
+  console.log(evtSource.withCredentials);
+  console.log(evtSource.readyState);
+  console.log(evtSource.url);
+  var eventList = document.querySelector('ul');
+  evtSource.onopen = function() {
+    console.log("Connection to server opened.");
+  };
+  evtSource.onmessage = function(e) {
+    var newElement = document.createElement("li");
+    newElement.textContent = "message: " + e.data;
+    eventList.appendChild(newElement);
+  };
+  evtSource.onerror = function() {
+    console.log("EventSource failed.");
+  };
+  button.onclick = function() {
+    console.log('Connection closed');
+    evtSource.close();
+  };
+  // evtSource.addEventListener("ping", function(e) {
+  //   var newElement = document.createElement("li");
+  //
+  //   var obj = JSON.parse(e.data);
+  //   newElement.innerHTML = "ping at " + obj.time;
+  //   eventList.appendChild(newElement);
+  // }, false);
+</script>
+</body>
 </html>
