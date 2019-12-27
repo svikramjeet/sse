@@ -26,6 +26,6 @@ set_time_limit(20);
   //$sse->client_reconnect = 10; //the time for the client to reconnect after the connection has lost in seconds. Default: 1.
 //	$sse->use_chunked_encodung = true; //Use chunked encoding. Some server may get problems with this and it defaults to false
 //	$sse->keep_alive_time = 29; //The interval of sending a signal to keep the connection alive. Default: 300 seconds.
-	$sse->allow_cors = true;
+//	$sse->allow_cors = true;
   $sse->start();//start the event loop
 	
