@@ -1,4 +1,7 @@
 <?php
+ini_set('max_execution_time', 10);
+set_time_limit(20);
+
 	require_once('vendor/autoload.php'); //Load with ClassLoader
 	
 	use Sse\Event;
@@ -19,5 +22,6 @@
 	
 	$sse = new SSE(); //create a libSSE instance
 	$sse->addEventListener('event_name', new YourEventHandler());//register your event handler
-	$sse->start();//start the event loop
+  $sse->exec_limit = 0;
+  $sse->start();//start the event loop
 	
