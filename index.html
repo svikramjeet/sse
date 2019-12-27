@@ -6,7 +6,7 @@
 
     <script>
       if (typeof EventSource !== "undefined") {
-        const evtSource = new EventSource("ssedemo.php");
+        const evtSource = new EventSource("sse.php");
         evtSource.onmessage = function(event) {
           const newElement = document.createElement("li");
           const eventList = document.getElementById("list");
