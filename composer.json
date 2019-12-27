@@ -1,0 +1,13 @@
+{
+    "name": "svikramjeet/sse",
+    "keywords": [
+        "sse",
+        "php",
+        "laravel"
+    ],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+
+    }
+}
