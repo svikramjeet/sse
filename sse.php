@@ -4,7 +4,7 @@ date_default_timezone_set("America/New_York");
 header("Cache-Control: no-cache");
 header("Content-Type: text/event-stream");
 
-$counter = rand(1, 10);
+$counter = rand(1, 100);
 while (true) {
   // Every second, send a "ping" event.
   
